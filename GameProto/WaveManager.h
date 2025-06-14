@@ -17,6 +17,7 @@ public:
 
 	void Initialize(std::vector<Enemy*>& outNew);
 	void Update(float deltaTime, std::vector<Enemy*>& outNew);
+	float GetCurrentWave() const { return static_cast<float>(m_WaveCount); }
 
 private:
 	int m_WaveCount{ 0 };

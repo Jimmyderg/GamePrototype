@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Enemy.h"
 #include "Player.h"
+#include "utils.h"
 
 Enemy::Enemy(float posX, float posY, Player* player, float health)
     : m_Position{ posX, posY }, 
@@ -11,15 +12,10 @@ Enemy::Enemy(float posX, float posY, Player* player, float health)
 void Enemy::Draw()
 {
     // Set color (Red)
-    glColor3f(1.0f, 0.0f, 0.0f); // RGB (1.0 = 255)
+    utils::SetColor(Color4f{ 1.f,0.f,0.f,1.f }); // RGB (1.0 = 255)
 
     // Draw a filled quad (immediate mode)
-    glBegin(GL_QUADS);
-    glVertex2f(m_Position.x, m_Position.y);
-    glVertex2f(m_Position.x + m_Width, m_Position.y);
-    glVertex2f(m_Position.x + m_Width, m_Position.y + m_Height);
-    glVertex2f(m_Position.x, m_Position.y + m_Height);
-    glEnd();
+	utils::FillRect(m_Position.x, m_Position.y, m_Width, m_Height);
 }
 
 void Enemy::Update(float elapsedSec)
@@ -29,7 +25,7 @@ void Enemy::Update(float elapsedSec)
     Vector2f playerPos = m_pPlayer->GetPosition();
 
     // Calculate direction vector toward player
-    Vector2f direction = playerPos - m_Position;
+    Vector2f direction = (playerPos - m_Position) - Vector2f{ 16.f,16.f };
     float distance = sqrt(direction.x * direction.x + direction.y * direction.y);
 
     // Normalize direction and move
@@ -103,12 +99,7 @@ void Enemy::DrawHealthBar() const
 		glColor3f(1.0f, 0.0f, 0.0f); // Red
 
 	// Draw the health bar
-	glBegin(GL_QUADS);
-	glVertex2f(healthBarX, healthBarY);
-	glVertex2f(healthBarX + healthBarWidth * healthPercentage, healthBarY);
-	glVertex2f(healthBarX + healthBarWidth * healthPercentage, healthBarY + healthBarHeight);
-	glVertex2f(healthBarX, healthBarY + healthBarHeight);
-	glEnd();
+	utils::FillRect(healthBarX, healthBarY, healthBarWidth * healthPercentage, healthBarHeight);
 }
 void Enemy::RemoveEnemy()
 {

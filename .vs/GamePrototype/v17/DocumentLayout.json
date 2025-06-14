@@ -1,0 +1,253 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\UI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\WaveManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\WaveManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UpgradeUI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\UpgradeUI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\WaveManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\WaveManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UpgradeUI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\UpgradeUI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\BaseRangedWeapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\BaseRangedWeapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\BaseRangedWeapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\BaseRangedWeapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EA707E0E-50C2-4422-9FD3-7D11C5E29059}|GameProto\\GameProto.vcxproj|solutionrelative:GameProto\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpgradeUI.cpp",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UpgradeUI.cpp",
+              "RelativeDocumentMoniker": "GameProto\\UpgradeUI.cpp",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UpgradeUI.cpp",
+              "RelativeToolTip": "GameProto\\UpgradeUI.cpp",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFMAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T20:39:44.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UpgradeUI.h",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UpgradeUI.h",
+              "RelativeDocumentMoniker": "GameProto\\UpgradeUI.h",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UpgradeUI.h",
+              "RelativeToolTip": "GameProto\\UpgradeUI.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-14T20:39:28.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BaseRangedWeapon.cpp",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\BaseRangedWeapon.cpp",
+              "RelativeDocumentMoniker": "GameProto\\BaseRangedWeapon.cpp",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\BaseRangedWeapon.cpp",
+              "RelativeToolTip": "GameProto\\BaseRangedWeapon.cpp",
+              "ViewState": "AgIAANUAAAAAAAAAAAAAAO4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T20:21:32.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Enemy.h",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Enemy.h",
+              "RelativeDocumentMoniker": "GameProto\\Enemy.h",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Enemy.h",
+              "RelativeToolTip": "GameProto\\Enemy.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-14T20:07:26.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Enemy.cpp",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Enemy.cpp",
+              "RelativeDocumentMoniker": "GameProto\\Enemy.cpp",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Enemy.cpp",
+              "RelativeToolTip": "GameProto\\Enemy.cpp",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T19:30:54.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BaseRangedWeapon.h",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\BaseRangedWeapon.h",
+              "RelativeDocumentMoniker": "GameProto\\BaseRangedWeapon.h",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\BaseRangedWeapon.h",
+              "RelativeToolTip": "GameProto\\BaseRangedWeapon.h",
+              "ViewState": "AgIAAB0AAAAAAAAAAADwvy4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-14T19:07:02.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Game.cpp",
+              "RelativeDocumentMoniker": "GameProto\\Game.cpp",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Game.cpp",
+              "RelativeToolTip": "GameProto\\Game.cpp",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAqwPsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T19:04:37.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Game.h",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Game.h",
+              "RelativeDocumentMoniker": "GameProto\\Game.h",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Game.h",
+              "RelativeToolTip": "GameProto\\Game.h",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowC8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-14T19:04:21.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WaveManager.h",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\WaveManager.h",
+              "RelativeDocumentMoniker": "GameProto\\WaveManager.h",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\WaveManager.h",
+              "RelativeToolTip": "GameProto\\WaveManager.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBMAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-14T18:48:39.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WaveManager.cpp",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\WaveManager.cpp",
+              "RelativeDocumentMoniker": "GameProto\\WaveManager.cpp",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\WaveManager.cpp",
+              "RelativeToolTip": "GameProto\\WaveManager.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T18:48:38.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UI.cpp",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UI.cpp",
+              "RelativeDocumentMoniker": "GameProto\\UI.cpp",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UI.cpp",
+              "RelativeToolTip": "GameProto\\UI.cpp",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T18:44:49.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UI.h",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UI.h",
+              "RelativeDocumentMoniker": "GameProto\\UI.h",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\UI.h",
+              "RelativeToolTip": "GameProto\\UI.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-14T18:44:33.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Player.h",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Player.h",
+              "RelativeDocumentMoniker": "GameProto\\Player.h",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Player.h",
+              "RelativeToolTip": "GameProto\\Player.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwBwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-14T18:38:17.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Player.cpp",
+              "RelativeDocumentMoniker": "GameProto\\Player.cpp",
+              "ToolTip": "E:\\Downloads\\GamePrototype-master\\GamePrototype-master\\GameProto\\Player.cpp",
+              "RelativeToolTip": "GameProto\\Player.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-14T16:30:16.688Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

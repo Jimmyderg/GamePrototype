@@ -1,0 +1,13 @@
+﻿  UI.cpp
+E:\Downloads\GamePrototype-master\GamePrototype-master\GameProto\Player.h(32,38): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+  (compiling source file 'UI.cpp')
+  
+E:\Downloads\GamePrototype-master\GamePrototype-master\GameProto\Player.h(33,42): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+  (compiling source file 'UI.cpp')
+  
+  GameProto.vcxproj -> E:\Downloads\GamePrototype-master\GamePrototype-master\x64\Debug\GameProto.exe
+  0 File(s) copied
+  0 File(s) copied
+  0 File(s) copied
+  0 File(s) copied
+  0 File(s) copied

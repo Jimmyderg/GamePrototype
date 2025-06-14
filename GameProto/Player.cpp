@@ -4,6 +4,9 @@
 #include <SDL_image.h>
 #include "structs.h"
 #include <algorithm>
+#include <cmath>
+#include <random>
+#include <iostream>
 
 Player::Player(float posX, float posY, float health)
     : m_Position{ posX, posY }
@@ -29,7 +32,6 @@ void Player::Draw()
     }
 
     // Always draw health bar
-    DrawHealthBar();
 }
 
 void Player::Update(float elapsedSec) 
@@ -190,4 +192,95 @@ void Player::UpdateWeapons(float elapsedSec, const Vector2f& mousePos) {
 			}
 		}
 	}
+}
+void Player::GainXP(int xp)
+{
+    m_XP += xp;
+    std::cout << "Gained " << xp << " XP! (" << m_XP << "/" << m_XPToNextLevel << ")\n";
+    CheckLevelUp();
+}
+
+void Player::CheckLevelUp()
+{
+    while (m_XP >= m_XPToNextLevel) {
+        m_XP -= m_XPToNextLevel;
+        LevelUp();
+        m_XPToNextLevel = static_cast<int>(std::ceil(m_XPToNextLevel * 1.5f));
+    }
+}
+
+void Player::LevelUp()
+{
+    ++m_Level;
+    std::cout << "Level " << m_Level << " reached!\n";
+    if (m_Level % 5 == 0) {
+        ChooseUpgrade();
+    }
+}
+
+void Player::ChooseUpgrade()
+{
+    enum Upgrade { M_DAMAGE, R_DAMAGE, M_RANGE, R_Range, F_RATE, B_PIERCE, MAX_HEALTH, MOVE_SPEED };
+    std::vector<Upgrade> all = { M_DAMAGE, R_DAMAGE, M_RANGE, R_Range, F_RATE, B_PIERCE, MAX_HEALTH, MOVE_SPEED };
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::shuffle(all.begin(), all.end(), gen);
+    auto opts = std::vector<Upgrade>(all.begin(), all.begin() + 3);
+
+    std::cout << "Choose an upgrade:\n";
+    for (int i = 0; i < opts.size(); ++i) {
+        std::cout << (i + 1) << ": ";
+        switch (opts[i]) {
+        case M_DAMAGE:    std::cout << "+5% melee damage";    break;
+        case R_DAMAGE:    std::cout << "+5% ranged damage";   break;
+        case M_RANGE:     std::cout << "+10% melee range";     break;
+		case R_Range:     std::cout << "+10% ranged range";    break;
+        case F_RATE:      std::cout << "+10% fire rate";      break;
+        case B_PIERCE:    std::cout << "+1 bullet pierce";    break;
+        case MAX_HEALTH:  std::cout << "+20 max health";      break;
+        case MOVE_SPEED:  std::cout << "+10% move speed";     break;
+        }
+        std::cout << "\n";
+    }
+    int choice = 1; // TODO: replace with real player input
+    Upgrade sel = opts[choice - 1];
+
+    switch (sel) {
+    case M_DAMAGE:    m_MeleeDamage *= 1.05f; break;
+    case R_DAMAGE:    m_RangedDamage *= 1.05f; break;
+    case M_RANGE:     m_MeleeRange *= 1.10f; break;
+	case R_Range:     m_RangedRange *= 1.10f; break;
+    case F_RATE:      m_FireRate *= 1.10f; break;
+    case B_PIERCE:    ++m_BulletPierce;      break;
+    case MAX_HEALTH:  m_MaxHealth += 20.f; break;
+    case MOVE_SPEED:  m_MoveSpeed *= 1.10f; break;
+    }
+    std::cout << "Upgrade applied!\n";
+}
+
+std::array<Player::Upgrade, 3> Player::GenerateUpgradeOptions() const
+{
+    std::vector<Upgrade> all = {
+      Upgrade::M_DAMAGE, Upgrade::R_DAMAGE, Upgrade::M_RANGE,
+	  Upgrade::R_Range, Upgrade::F_RATE,   Upgrade::B_PIERCE, 
+      Upgrade::MAX_HEALTH, Upgrade::MOVE_SPEED
+    };
+    std::shuffle(all.begin(), all.end(),
+        std::mt19937{ std::random_device{}() });
+    return { all[0], all[1], all[2] };
+}
+
+void Player::ApplyUpgrade(Upgrade up)
+{
+    switch (up)
+    {
+    case Upgrade::M_DAMAGE:   m_MeleeDamage *= 1.05f; break;
+    case Upgrade::R_DAMAGE:   m_RangedDamage *= 1.05f; break;
+    case Upgrade::M_RANGE:    m_MeleeRange *= 1.10f; break;
+	case Upgrade::R_Range:    m_RangedRange *= 1.10f; break;
+    case Upgrade::F_RATE:     m_FireRate *= 1.10f; break;
+    case Upgrade::B_PIERCE:   ++m_BulletPierce;          break;
+    case Upgrade::MAX_HEALTH: m_MaxHealth += 20.f;     break;
+    case Upgrade::MOVE_SPEED: m_MoveSpeed *= 1.10f;     break;
+    }
 }

@@ -14,7 +14,7 @@ BaseMeleeWeapon::BaseMeleeWeapon()
     , Damage(20.0f)
     , Range(50.0f)
     , m_Position{ 0.0f, 0.0f }
-    , m_Attached(false)
+    , m_Attached(true)
     , m_AttachmentAngle(0.0f)
 {
     std::srand(static_cast<unsigned>(std::time(nullptr)));
@@ -155,8 +155,7 @@ void BaseMeleeWeapon::Update(float elapsedSec, const Vector2f& playerPos, const 
 {
     if (!m_Attached) return;
     // Swing animation
-    SwingAngle += SwingSpeed * elapsedSec;
-    if (std::fabsf(SwingAngle) > 60.0f) SwingSpeed = -SwingSpeed;
+
     // Recalculate angle toward mouse
     Vector2f dir = mousePos - playerPos;
     float dist = std::sqrtf(dir.x * dir.x + dir.y * dir.y);

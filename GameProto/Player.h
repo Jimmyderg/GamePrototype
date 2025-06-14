@@ -6,11 +6,15 @@
 #include <cmath>
 #include <chrono>
 #include "BaseMeleeWeapon.h"
-
+#include <array> // Add this include to ensure std::array is fully defined    #include <array> // Add this include to ensure std::array is fully defined
+#include <string>
 
 class Player
 {
 public:
+
+    enum class Upgrade { M_DAMAGE, R_DAMAGE, M_RANGE, R_Range, F_RATE, B_PIERCE, MAX_HEALTH, MOVE_SPEED };
+
     Player(float posX, float posY, float health);
     ~Player();
 
@@ -25,7 +29,15 @@ public:
     float GetHealth() const;
     bool IsDead() const { return m_Health <= 0; } // Game-over check
     bool IsInvincible() const { return m_Invincible; }
+	float GetCurrentXP() const { return m_XP; }
+	float GetXPToNextLevel() const { return m_XPToNextLevel; }
+	float GetMaxHealth() const { return m_MaxHealth; } // Accessor for max health
 
+    void GainXP(int xp);
+    int GetLevel() const { return m_Level; }
+
+    std::array<Upgrade, 3> GenerateUpgradeOptions() const;
+    void ApplyUpgrade(Upgrade up);
     void TryPickUpWeapon(const Vector2f& mousePos);
 
     void UpdateWeapons(float elapsedSec, const Vector2f& mousePos);
@@ -83,4 +95,20 @@ private:
             static_cast<float>(frameHeight)
         };
     }
+    int m_Level{ 1 };
+    int m_XP{ 0 };
+    int m_XPToNextLevel{ 100 };
+
+    // Upgradeable stats
+    float m_MeleeDamage;
+    float m_RangedDamage;
+    float m_MeleeRange;
+	float m_RangedRange;
+    float m_FireRate;
+    int   m_BulletPierce{ 1 };
+
+    // Level-up handlers
+    void CheckLevelUp();
+    void LevelUp();
+    void ChooseUpgrade();
 };
