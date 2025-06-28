@@ -6,11 +6,11 @@
 #include <ctime>
 
 //constructor
-WaveManager::WaveManager(int BasePerWave, float intercalSec, Player* player)
+WaveManager::WaveManager(int BasePerWave, float intervalSec, Player* player)
 	: m_WaveCount(0)
 	, m_Timer(0.0f)
 	, m_BasePerWave(BasePerWave)
-	, m_Interval(intercalSec)
+    , m_Interval(intervalSec)
 	, m_pPlayer(player)
 {
 	std::srand(static_cast<unsigned int>(std::time(nullptr))); // Seed the random number generator
