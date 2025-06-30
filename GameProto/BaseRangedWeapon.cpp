@@ -208,30 +208,17 @@ void BaseRangedWeapon::Update(float elapsedSec, const Vector2f& playerPos, const
 // Draw weapon and projectiles
 void BaseRangedWeapon::Draw() const
 {
-    // Draw the weapon as a rectangle at m_Position
+    // Draw the weapon using utils helper functions
     glPushMatrix();
     glTranslatef(m_Position.x, m_Position.y, 0.0f);
-    glRotatef(m_AttachmentAngle * 180.0f / 3.14159f, 0.0f, 0.0f, 1.0f);
-    glBegin(GL_QUADS);
-    glVertex2f(-10.0f, -5.0f);
-    glVertex2f(10.0f, -5.0f);
-    glVertex2f(10.0f, 5.0f);
-    glVertex2f(-10.0f, 5.0f);
-    glEnd();
+    glRotatef(m_AttachmentAngle * 180.0f / utils::g_Pi, 0.0f, 0.0f, 1.0f);
+    utils::FillRect(-10.0f, -5.0f, 20.0f, 10.0f);
     glPopMatrix();
 
     // Draw projectiles
     for (const auto& proj : m_Projectiles) {
         if (!proj.active) continue;
-        glPushMatrix();
-        glTranslatef(proj.position.x, proj.position.y, 0.0f);
-        glBegin(GL_QUADS);
-        glVertex2f(-2.0f, -2.0f);
-        glVertex2f(2.0f, -2.0f);
-        glVertex2f(2.0f, 2.0f);
-        glVertex2f(-2.0f, 2.0f);
-        glEnd();
-        glPopMatrix();
+        utils::FillRect(proj.position.x - 2.0f, proj.position.y - 2.0f, 4.0f, 4.0f);
     }
 }
 
