@@ -1,0 +1,11 @@
+﻿  BaseGame.cpp
+  Matrix2x3.cpp
+  SoundEffect.cpp
+  SoundStream.cpp
+  structs.cpp
+  SVGParser.cpp
+  Texture.cpp
+  utils.cpp
+  Vector2f.cpp
+  Generating Code...
+  Engine.vcxproj -> C:\Devc\GamePrototype\x64\Debug\Engine.lib

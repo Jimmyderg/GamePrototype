@@ -2,6 +2,7 @@
 #include "BaseGame.h"
 #include "Vector2f.h"
 #include "Texture.h"
+#include <SDL_mixer.h>
 #include <vector>
 #include <memory>
 
@@ -41,6 +42,7 @@ private:
 	void Cleanup( );
 	void ClearBackground( ) const;
 
+
 	// DATA MEMBERS
 
 	bool m_IsMouseDown{ false }; // Mouse button state
@@ -54,6 +56,9 @@ private:
 	Vector2f m_MousePos{ 0.f, 0.f }; // Mouse position
 
 	Player* m_pPlayer = nullptr;
+
+	Texture* m_pBackground = nullptr; // Background texture
+	Mix_Music* m_pBGMusic = nullptr; // Background music
 
 	std::vector<Enemy*> m_Enemies;	
 	std::vector<BaseMeleeWeapon*> m_pWeapons; // List of weapons

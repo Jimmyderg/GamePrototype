@@ -1,8 +1,10 @@
 ﻿#include "pch.h"
 #include "BaseRangedWeapon.h"
 #include "Enemy.h"
+#include "utils.h"
 #include <cstdlib>
 #include <ctime>
+#include <stdexcept>
 #include <cmath>
 #include <GL/gl.h>
 
@@ -87,6 +89,23 @@ BaseRangedWeapon& BaseRangedWeapon::operator=(BaseRangedWeapon&& rhs) noexcept
     return *this;
 }
 
+// Load gunshot sound effect
+Mix_Chunk* BaseRangedWeapon::s_pGunshot = nullptr;
+
+bool BaseRangedWeapon::LoadGunshotSfx(const std::string& path)
+{
+    s_pGunshot = Mix_LoadWAV(path.c_str());
+    return s_pGunshot != nullptr;
+}
+void BaseRangedWeapon::UnloadGunshotSfx()
+{
+    if (s_pGunshot) {
+        Mix_FreeChunk(s_pGunshot);
+        s_pGunshot = nullptr;
+    }
+}
+
+
 // Spawn randomly on the map
 void BaseRangedWeapon::SpawnRandom(float screenWidth, float screenHeight)
 {
@@ -131,6 +150,11 @@ void BaseRangedWeapon::Fire(const Vector2f& playerPos, const Vector2f& mousePos,
     if (!m_Attached || !isMouseDown) return;
     if (m_TimeSinceLastShot < 1.0f / m_FireRate) return;
 
+    // play the SFX
+    if (s_pGunshot) {
+        Mix_PlayChannel(-1, s_pGunshot, 0);
+    }
+	// Calculate direction from player to mouse
     Vector2f dir = mousePos - playerPos;
     float length = std::sqrt(dir.x * dir.x + dir.y * dir.y);
     if (length == 0) return;

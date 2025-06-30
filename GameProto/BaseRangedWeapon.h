@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector2f.h"
+#include <SDL_mixer.h>
 #include <vector>
 
 class Enemy;
@@ -23,6 +24,11 @@ public:
     BaseRangedWeapon& operator=(const BaseRangedWeapon& other);
     BaseRangedWeapon(BaseRangedWeapon&& other) noexcept;
     BaseRangedWeapon& operator=(BaseRangedWeapon&& other) noexcept;
+
+    // call once at startup:
+    static bool LoadGunshotSfx(const std::string& path);
+    // call once at shutdown:
+    static void  UnloadGunshotSfx();
 
     // Spawning and pickup
     void SpawnRandom(float screenWidth, float screenHeight);
@@ -55,6 +61,10 @@ private:
     float m_BulletSpeed;
     float m_FireRate; // shots per second
     float m_TimeSinceLastShot;
+	float m_BulletLifetime;
+
+	//Gunshot sound effect
+    static Mix_Chunk* s_pGunshot;
 
     // State
     Vector2f m_Position;

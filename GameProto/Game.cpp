@@ -27,6 +27,7 @@ Game::~Game()
 
 void Game::Initialize()
 {
+
     // Seed random generator
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
@@ -59,6 +60,27 @@ void Game::Initialize()
 	if (!m_pUI) {
 		throw std::runtime_error("Failed to initialize UI");
 	}
+	// Initialize Background texture
+	m_pBackground = new Texture("grasstest_1.png");
+
+    // 2) Init SDL_mixer and start the music
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+        throw std::runtime_error(std::string("Mix_OpenAudio failed: ") + Mix_GetError());
+
+    m_pBGMusic = Mix_LoadMUS("Words.mp3");
+    if (!m_pBGMusic)
+        throw std::runtime_error(std::string("Failed to load music: ") + Mix_GetError());
+
+    // -1 loops forever
+    if (Mix_PlayMusic(m_pBGMusic, -1) < 0)
+        throw std::runtime_error(std::string("Mix_PlayMusic failed: ") + Mix_GetError());
+
+    //gunshot sfx
+    if (!BaseRangedWeapon::LoadGunshotSfx("Gunshot.wav")) {
+        throw std::runtime_error(std::string("Failed to load gunshot SFX: ") +
+            Mix_GetError());
+    }
+
 
 }
 
@@ -105,81 +127,64 @@ void Game::Cleanup()
 	m_ReloadPct = 0.0f;
 	// Reset paused state for upgrades
 	m_PausedForUpgrade = false;
-
+	// Cleanup background texture
+	delete m_pBackground;
+	m_pBackground = nullptr;
+	// Cleanup background music
+	if (m_pBGMusic) {
+		Mix_FreeMusic(m_pBGMusic);
+		m_pBGMusic = nullptr;
+	}
+	// Quit SDL_mixer
+	Mix_Quit();
+    BaseRangedWeapon::UnloadGunshotSfx();
 }
 
 void Game::Update(float elapsedSec)
 {
-    // Game over check
-    if (m_pPlayer->GetHealth() <= 0) {
-        std::cout << "GAME OVER!" << std::endl;
-        return;
-    }
+	// only update if not paused for upgrades
+    if (!m_PausedForUpgrade) {
 
-    // Update player
-    m_pPlayer->Update(elapsedSec);
-    const Uint8* keyState = SDL_GetKeyboardState(nullptr);
-    m_pPlayer->HandleMovement(elapsedSec, keyState);
-
-    // Wave spawning
-    m_pWaveManager->Update(elapsedSec, m_Enemies);
-
-    // Update and remove dead enemies
-    for (auto it = m_Enemies.begin(); it != m_Enemies.end(); ) {
-        Enemy* e = *it;
-        e->Update(elapsedSec);
-        if (e->IsDead()) {
-			
-            delete e;
-            it = m_Enemies.erase(it);
+        // Game over check
+        if (m_pPlayer->GetHealth() <= 0) {
+            std::cout << "GAME OVER!" << std::endl;
+            return;
         }
-        else {
-            ++it;
-        }
-    }
 
-    if (!m_RangedMode)
-    {
-        // MELEE: only update & draw melee weapons
-        for (BaseMeleeWeapon* w : m_pWeapons)
-        {
-            Vector2f pc = m_pPlayer->GetPosition();
-            w->Update(elapsedSec, pc, m_MousePos);
-            if (w->CheckPlayerCollision(pc, 5.f)) w->AttachToPlayer(pc, m_MousePos);
-            for (auto it = m_Enemies.begin(); it != m_Enemies.end(); )
-            {
-                Enemy* e = *it;
-                if (w->CheckEnemyCollision(e))
-                {
-                    w->DealDamage(e);
-                    if (e->IsDead())
-                    {
-                        m_pPlayer->GainXP(XPGainFromEnemy); // Give XP for killing an enemy 
-                        delete e;
-                        it = m_Enemies.erase(it);
-                        continue;
-                    }
-                }
+        // Update player
+        m_pPlayer->Update(elapsedSec);
+        const Uint8* keyState = SDL_GetKeyboardState(nullptr);
+        m_pPlayer->HandleMovement(elapsedSec, keyState);
+
+        // Wave spawning
+        m_pWaveManager->Update(elapsedSec, m_Enemies);
+
+        // Update and remove dead enemies
+        for (auto it = m_Enemies.begin(); it != m_Enemies.end(); ) {
+            Enemy* e = *it;
+            e->Update(elapsedSec);
+            if (e->IsDead()) {
+
+                delete e;
+                it = m_Enemies.erase(it);
+            }
+            else {
                 ++it;
             }
         }
-    }
-    else
-    {
-        // RANGED: only update & draw ranged weapons
-        for (BaseRangedWeapon* w : m_pRangedWeapons)
+
+        if (!m_RangedMode)
         {
-            Vector2f pc = m_pPlayer->GetPosition();
-            w->Fire(pc, m_MousePos, m_IsMouseDown);
-            w->Update(elapsedSec, pc, m_MousePos);
-            if (w->CheckPlayerCollision(pc, 5.f)) w->AttachToPlayer(pc, m_MousePos);
-            for (auto it = m_Enemies.begin(); it != m_Enemies.end(); )
+            // MELEE: only update & draw melee weapons
+            for (BaseMeleeWeapon* w : m_pWeapons)
             {
-                Enemy* e = *it;
-                bool removed = false;
-                for (const Projectile& proj : w->GetProjectiles())
+                Vector2f pc = m_pPlayer->GetPosition();
+                w->Update(elapsedSec, pc, m_MousePos);
+                if (w->CheckPlayerCollision(pc, 5.f)) w->AttachToPlayer(pc, m_MousePos);
+                for (auto it = m_Enemies.begin(); it != m_Enemies.end(); )
                 {
-                    if (w->CheckEnemyCollision(proj, e))
+                    Enemy* e = *it;
+                    if (w->CheckEnemyCollision(e))
                     {
                         w->DealDamage(e);
                         if (e->IsDead())
@@ -187,57 +192,97 @@ void Game::Update(float elapsedSec)
                             m_pPlayer->GainXP(XPGainFromEnemy); // Give XP for killing an enemy 
                             delete e;
                             it = m_Enemies.erase(it);
-                            removed = true;
-                            break;
+                            continue;
                         }
                     }
+                    ++it;
                 }
-                if (!removed) ++it;
             }
         }
-    }
-    if (m_pRangedWeapons.empty())
-    {
-        m_ReloadPct = 0.0f;
-    }
-    else
-    {
-        // always use the first (equipped) ranged weapon
-        auto* w = m_pRangedWeapons[0];
-        m_ReloadPct = w->GetReloadProgress();
-    }
+        else
+        {
+            // RANGED: only update & draw ranged weapons
+            for (BaseRangedWeapon* w : m_pRangedWeapons)
+            {
+                Vector2f pc = m_pPlayer->GetPosition();
+                w->Fire(pc, m_MousePos, m_IsMouseDown);
+                w->Update(elapsedSec, pc, m_MousePos);
+                if (w->CheckPlayerCollision(pc, 5.f)) w->AttachToPlayer(pc, m_MousePos);
+                for (auto it = m_Enemies.begin(); it != m_Enemies.end(); )
+                {
+                    Enemy* e = *it;
+                    bool removed = false;
+                    for (const Projectile& proj : w->GetProjectiles())
+                    {
+                        if (w->CheckEnemyCollision(proj, e))
+                        {
+                            w->DealDamage(e);
+                            if (e->IsDead())
+                            {
+                                m_pPlayer->GainXP(XPGainFromEnemy); // Give XP for killing an enemy 
+                                delete e;
+                                it = m_Enemies.erase(it);
+                                removed = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!removed) ++it;
+                }
+            }
+        }
+        if (m_pRangedWeapons.empty())
+        {
+            m_ReloadPct = 0.0f;
+        }
+        else
+        {
+            // always use the first (equipped) ranged weapon
+            auto* w = m_pRangedWeapons[0];
+            m_ReloadPct = w->GetReloadProgress();
+        }
 
-    //Upgrade UI
-    static int lastHandledLevel = 1;
-    int currentLevel = m_pPlayer->GetLevel();
-    if (!m_PausedForUpgrade
-        && currentLevel != lastHandledLevel
-        && currentLevel % 5 == 0)
-    {
-        lastHandledLevel = currentLevel;
-        auto opts = m_pPlayer->GenerateUpgradeOptions();
-        auto vp = GetViewPort();
-        m_pUpgradeUI = new UpgradeUI(
-            opts,
-            "VCR_OSD_MONO_1.001.ttf",
-            18,
-            vp.width,
-            vp.height
-        );
-        m_PausedForUpgrade = true;
-        return;   // skip the rest of Update() while paused
+        //Upgrade UI
+        static int lastHandledLevel = 1;
+        int currentLevel = m_pPlayer->GetLevel();
+        if (!m_PausedForUpgrade
+            && currentLevel != lastHandledLevel
+            && currentLevel % 5 == 0)
+        {
+            lastHandledLevel = currentLevel;
+            auto opts = m_pPlayer->GenerateUpgradeOptions();
+            auto vp = GetViewPort();
+            m_pUpgradeUI = new UpgradeUI(
+                opts,
+                "VCR_OSD_MONO_1.001.ttf",
+                18,
+                vp.width,
+                vp.height
+            );
+            m_PausedForUpgrade = true;
+            return;   // skip the rest of Update() while paused
+        }
+
+        // If we’re paused for upgrades, consume only the upgrade?UI input
+        if (m_PausedForUpgrade)
+            return;
     }
-
-    // If we’re paused for upgrades, consume only the upgrade?UI input
-    if (m_PausedForUpgrade)
-        return;
-
 }
 
 
 void Game::Draw() const
 {
-    ClearBackground();
+	ClearBackground();
+	// Draw background texture
+    if (m_pBackground) {
+        Rectf fullRect{ 0, 0, GetViewPort().width, GetViewPort().height };
+        Rectf fullAtlasRect{ 0, 0, m_pBackground->GetWidth(), m_pBackground->GetHeight() };
+        m_pBackground->Draw(fullRect, fullAtlasRect);
+    }
+    else {
+        std::cerr << "Background texture not initialized!" << std::endl;
+    }
+
 
     if (!m_RangedMode) {
         for (auto w : m_pWeapons)
@@ -268,6 +313,9 @@ void Game::Draw() const
     if (m_PausedForUpgrade) {
         m_pUpgradeUI->Draw();
     }
+
+
+
 }
 
 void Game::ProcessKeyDownEvent(const SDL_KeyboardEvent& e) 
