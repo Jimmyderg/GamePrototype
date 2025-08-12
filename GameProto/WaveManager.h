@@ -8,7 +8,7 @@ class Player;
 class WaveManager
 {
 public:
-	WaveManager(int basePerWave, float intercalSec, Player* player);
+    WaveManager(int basePerWave, float intervalSec, Player* player);
 	~WaveManager();
 	WaveManager(const WaveManager& other);
 	WaveManager& operator=(const WaveManager& other);
